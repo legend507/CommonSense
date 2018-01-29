@@ -68,3 +68,13 @@ int main()
 		
 	// *max_element(vector.begin(), vector.end()) // This also work
 }
+
+// iterate forward a vector
+/// 1. use iterator
+for(std::vector<T>::iterator it = v.begin(); it != v.end(); ++it)
+/// 2. Range C++11
+for(auto const& value: a) 	// vector<int> a={1, 2, 3}; value is iterated 1, 2, 3
+/// 3. use indices
+for(std::vector<int>::size_type i = 0; i != v.size(); i++)
+
+
