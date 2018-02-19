@@ -3,11 +3,13 @@
 using namespace std;
 
 int main() {
-    unordered_map<int, int> hash;
+    unordered_map<int, int> hash;		// 也可以声明 unordered_map<string, int> hash, 然后用 hash["test"]　＝　１０ 来添加新元素，另一种添加方式是 hash.insert(make_pair("test",10));
     hash[4] = 1;
     hash[6] = 9;
     hash[20] = 12;
     hash[10] = 11;
+
+	// 注意，必须要用iterator和first,second关键字来获得hash表内数据
     for (auto it = hash.begin(); it != hash.end(); it++) {
         cout << " " << it->first << ":" << it->second;
     }
@@ -21,6 +23,7 @@ int main() {
         cout << endl;
     }
 
+	// 查看某一元素是否在hash表内方法
     if(hash.find(4) != hash.end()) {
         cout << "found 4@ " << hash[4] << endl;
     }
