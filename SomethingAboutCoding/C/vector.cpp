@@ -1,4 +1,4 @@
-
+﻿
 // This creates a vector of RR size CC vectors, filled with 0.
 vector<vector<int> > matrix(RR, std::vector<int>(CC));
 vector<vector<char>> answer(boundary_x, vector<char>(boundary_y, '0')); // declare with initilization to '0'
@@ -77,4 +77,13 @@ for(auto const& value: a) 	// vector<int> a={1, 2, 3}; value is iterated 1, 2, 3
 /// 3. use indices
 for(std::vector<int>::size_type i = 0; i != v.size(); i++)
 
+
+
+// iterate and erase 怎样边遍历vector边消除元素
+for (vector<string>::iter = vec.begin(); iter != vec.end(); /*no iter++*/) {
+	if (? ? ? )
+		iter = vec.erase(iter);	// must have this "iter ="
+	else
+		iter++;
+}
 
