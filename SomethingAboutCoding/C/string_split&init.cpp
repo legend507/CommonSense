@@ -9,18 +9,18 @@ int main() {
     string sentence = "And I feel fine...";
     istringstream iss(sentence);
 	
-	// ¤èªk1
+	// •û–@1
     copy(istream_iterator<string>(iss),
          istream_iterator<string>(),
          ostream_iterator<string>(cout, "\n"));
 		 
-	// ¤èªk2
+	// •û–@2
 	vector<string> tokens;
 	copy(istream_iterator<string>(iss),
     istream_iterator<string>(),
     back_inserter(tokens));
 	
-	// ¤èªk3
+	// •û–@3
 	vector<string> tokens{istream_iterator<string>{iss},
                       istream_iterator<string>{}};
 }
