@@ -1,3 +1,9 @@
+/*
+If the question asks to find a minimum window,
+    and sequence of letter does NOT matter (e.g., "AC" and "CA" are all substrings of "ABC")
+    use this template
+*/
+
 #include    <unordered_map>
 #include    <string>
 #include    <iostream>
