@@ -3,24 +3,26 @@
 #include <sstream>
 #include <algorithm>
 #include <iterator>
+#include <vector>
+using namespace std;
 
 int main() {
     using namespace std;
     string sentence = "And I feel fine...";
     istringstream iss(sentence);
-	
-	// •û–@1
+    
+    // method 1
     copy(istream_iterator<string>(iss),
          istream_iterator<string>(),
          ostream_iterator<string>(cout, "\n"));
 		 
-	// •û–@2
+    // method 2
 	vector<string> tokens;
 	copy(istream_iterator<string>(iss),
     istream_iterator<string>(),
     back_inserter(tokens));
-	
-	// •û–@3
+
+    // method 3
 	vector<string> tokens{istream_iterator<string>{iss},
                       istream_iterator<string>{}};
 }

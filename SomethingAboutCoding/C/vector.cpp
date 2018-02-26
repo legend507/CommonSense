@@ -37,6 +37,8 @@ public:
 		sort(envelopes.begin(), envelopes.end(), cmp_first);
 		vector<int> dp;
 		for (int i = 0; i < envelopes.size(); ++i) {
+
+			// lower_bound: Returns an iterator pointing to the first element in the range [first,last) which does not compare less than val.
 			auto itr = lower_bound(dp.begin(), dp.end(), envelopes[i].second);
 			if (itr == dp.end()) {
 				dp.push_back(envelopes[i].second);
