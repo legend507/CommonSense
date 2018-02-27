@@ -28,6 +28,7 @@ void Print(const std::vector<T>& v) {
 /// sort the vector, ascend on int1, descend on int2 if int1 are the same
 class Solution {
 public:
+	// static function member可以在不创造class实体的情况下被调用
 	static bool cmp_first(const pair<int, int>& i, const pair<int, int>& j) {
 		if (i.first == j.first)
 			return i.second > j.second;
