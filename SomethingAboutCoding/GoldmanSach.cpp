@@ -1,9 +1,15 @@
+﻿/*
+总结一下Goldman Sachs面试失败原因，我觉得是因为我花了太多时间在这个问题上，还是C++写的太少，
+*/
+
 /* Problem Name is &&& HashMap &&& PLEASE DO NOT REMOVE THIS LINE. */
 
 #include <iostream>
 #include <vector>
 #include <list>
 #include <string>
+#include <unordered_map>
+#include <sstream>
 
 using namespace std;
 
@@ -24,9 +30,17 @@ public:
 	K key;
 
 	// constructor
-	MyHashNode(pair<int, int> oneNode) {
+	MyHashNode(pair<K, V> oneNode) {
 		this->value = oneNode.second;
 		this->key = oneNode.first;
+	}
+
+	MyHashNode(K key, V value) {
+		this->value = value;
+		this->key = key;
+	}
+	MyHashNode() {
+
 	}
 
 };
@@ -47,73 +61,54 @@ class MyHashMap
 {
 public:
 	//private:
-	MyHashNode<K, V> **array;  // * ?
+	MyHashNode<K, V> **hashMap;  // * ?
 	int capacity;
 
 	MyHashMap()
 	{
 		capacity = 20;
-		array = new MyHashNode<K, V>*[capacity];
-		for (int i = 0; i < capacity; i++)
-			array[i] = NULL;
+		hashMap = new MyHashNode<K, V>*[capacity];
 
-
+		for (int idx = 0; idx < capacity; idx++) {
+			hashMap[idx] = NULL;
+		}
 	}
 
 	~MyHashMap()
 	{
-		delete array;
+		for (int idx = 0; idx < capacity; idx++) {
+			if (hashMap[idx] != NULL)
+				delete hashMap[idx];
+		}
+
+		delete[] hashMap;
 	}
 
-	V operator[](const K& key)
+	V& operator[](const K& key)
 	{
-		// todo: implement
 		int index = convertKeyToIndex(key);
-
-		while (array[index] != NULL) {
-			if (array[index]->key == key) {
-				return array[index]->value;
-			}
-			//
-			index++;
-			index = index % capacity;
-
+		if (hashMap[index] == NULL) {
+			hashMap[index] = new MyHashNode<K, V>;
 		}
 
-		// if key not found 
-		return NAN;
+		return hashMap[index]->value;
 	}
 
+	/*
+	to convert key, regardless of int or string, a number ranged 0~199
+	*/
 	int convertKeyToIndex(K key) {
-		return key % capacity;
-	}
-
-	void insertNode(pair<int, int> oneNode) {
-		MyHashNode<K, V> *temp = new MyHashNode<K, V>(oneNode);
-
-		int index = convertKeyToIndex(oneNode.first);
-
-		while (array[index] != NULL
-			&& array[index]->key != oneNode.second
-			) {
-
-			if (index == convertKeyToIndex(oneNode.first)) {
-				array[index]->value = oneNode.second;
-				break;
-			}
-
-
-			index++;
-			index = index % capacity;
+		stringstream ss;
+		ss << key;
+		string tmp = ss.str();
+		unsigned long var = 0;
+		for (int idx = 0; idx < tmp.size(); idx++) {
+			var = var << 8;	// move 8 bit left
+			var += tmp[idx];
 		}
 
-
-
-		array[index] = temp;
-
+		return var % capacity;
 	}
-
-
 };
 
 void doTestsPass()
@@ -126,20 +121,20 @@ void doTestsPass()
 	MyHashMap<string, string> stringMap;
 	bool passed = true;
 
-	//for (const auto test : testCases)
-	//{
-	//	int key = test.first;
-	//	int value = test.second;
+	for (const auto test : testCases)
+	{
+		int key = test.first;
+		int value = test.second;
 
-	//	map.insertNode(test);
+		map[key] = value;
 
-	//	if (value != map[key])
-	//	{
-	//		passed = false;
+		if (value != map[key])
+		{
+			passed = false;
 
-	//		cout << "Test case failed [" << key << ',' << value << ']' << endl;
-	//	}
-	//}
+			cout << "Test case failed [" << key << ',' << value << ']' << endl;
+		}
+	}
 
 	for (const auto test : stringTestCases)
 	{
@@ -163,6 +158,7 @@ void doTestsPass()
 }
 
 int main() {
+
 	doTestsPass();
 	system("pause");
 	return 0;
