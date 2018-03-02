@@ -1,4 +1,7 @@
-﻿
+﻿/*
+解决 数独 matrix 问题，
+解决方法是 backtracing
+*/
 #include <iostream>
 #include <vector>
 #include <list>
