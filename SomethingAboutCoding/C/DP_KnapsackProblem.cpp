@@ -143,6 +143,38 @@ public:
 
 };
 
+class UnboundedKnapsackProblem {
+    /*
+     和classic Knapsack问题不同，
+     Unbounded KS允许用一件item无限次，
+     有 物品1（value：1，weight：1）和物品2（value：30，重量50）
+     我可以选物品1无限次，直到超过背包重量
+     */
+public:
+    int method1(vector<int>& value, vector<int>& weight, int maxW) {
+        int len = (int)weight.size();
+        
+        // dp[w] 表示，当最大承重量为i时，背包的max value
+        vector<int> dp(maxW + 1, 0);
+        
+        // traverse max weight
+        for(int w = 0; w < maxW+1; w++) {
+            // traverse all items
+            for(int i = 0; i < len; i++) {
+                // if weight of current item i does not exceed Knapsack capacity
+                if(weight[i] <= w)
+                    dp[w] = max(
+                                dp[w],                          /*Do not put current item i*/
+                                value[i] + dp[w - weight[i]]    /*Put current item i*/
+                                );
+            }
+        }
+        
+        return dp[maxW];
+    }
+    
+};
+
 
 int main() {
 	/*
@@ -159,6 +191,17 @@ int main() {
 	KnapsackProblem ks;
 
 	cout << ks.method2_dp(maxW, value, weight) << endl;
+
+	/*
+	下面是 unbounded Knapsack问题的test
+	*/
+	vector<int> value = { 10, 40, 60, 70 };
+    vector<int> weight = { 1, 3, 4, 5 };
+    int maxW = 8;
+    
+    UnboundedKnapsackProblem uks;
+    
+    cout << uks.method1(value, weight, maxW);
 
     system("pause");
     return 0;
