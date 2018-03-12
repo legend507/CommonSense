@@ -114,6 +114,7 @@ public:
 		s = s + root->data + leftStr + rightStr;
 
 		// store all subtrees in subtrees hashtable, paramete 3 means a signle node (e.g., A$$) is not a subtree
+		// 从下到上，存储所有serialized substree string，检查现在的Unordered_set中 已经存储过相同string
 		if (s.length() > 3
 			&& subtrees.find(s) != subtrees.end())
 			return "";

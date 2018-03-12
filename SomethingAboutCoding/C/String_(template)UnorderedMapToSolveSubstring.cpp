@@ -2,6 +2,14 @@
 If the question asks to find a minimum window,
     and sequence of letter does NOT matter (e.g., "AC" and "CA" are all substrings of "ABC")
     use this template
+
+Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+
+For example,
+S = "ADOBECODEBANC"
+T = "ABC"
+Minimum window is "BANC".
+
 */
 
 #include    <unordered_map>
