@@ -28,3 +28,5 @@ int main() {
 }
 
 // how to initialized a string with 10 dots: string str(10, '.');
+
+
