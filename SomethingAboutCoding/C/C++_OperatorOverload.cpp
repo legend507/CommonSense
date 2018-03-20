@@ -9,4 +9,12 @@ struct interval {
 		stream << "{" << obj.start << "," << obj.end << "}";
 		return stream;
 	};
+	// compare func
+	static bool compare(interval<T>& i1, interval<T>& i2) {
+		return (i1.start < i2.start);
+	}
 };
+
+
+// how to use self defined compare
+sort(input.begin(), input.end(), interval<int>::compare);
