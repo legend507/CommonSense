@@ -9,6 +9,10 @@ struct interval {
 		stream << "{" << obj.start << "," << obj.end << "}";
 		return stream;
 	};
+	// compare func
+	static bool compare(interval<T>& i1, interval<T>& i2) {
+		return (i1.start < i2.start);
+	}
 };
 
 
@@ -26,3 +30,4 @@ struct cell {
 
 	cell() :parent_i(-1), parent_j(-1), f(FLT_MAX), g(FLT_MAX), h(FLT_MAX) {};
 };
+
