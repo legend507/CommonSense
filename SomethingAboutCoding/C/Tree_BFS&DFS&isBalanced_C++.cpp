@@ -19,6 +19,27 @@ struct TreeNode {
 
 class Codec {
 public:
+	/*下面的func检查当前树是否是balanced tree*/
+	bool isBalanced(TreeNode* root) {
+		int leftHeight = 0;
+		int rightHeight = 0;
+
+		// if a tree is empty, then it is balanced
+		if (root == NULL)
+			return true;
+
+		//
+		leftHeight = findHeight(root->left);
+		rightHeight = findHeight(root->right);
+
+		if (abs(leftHeight - rightHeight) <= 1 &&	/*for current root, left and right height diff <= 1*/
+			isBalanced(root->left) &&				/*check left subtree is balanced*/
+			isBalanced(root->right))				/*check right subtree is balanced*/
+			return true;
+
+		return false;
+
+	}
 
 	/* ---------------------------BFS ------------------------------------------------------
 	从最上层开始逐层扫描，先打印 左孩子，再打印 右孩子
@@ -150,6 +171,7 @@ int main() {
 
 	root.left = new TreeNode(2);
 	root.left->right = new TreeNode(100);
+	root.left->right->right = new TreeNode(200);
 
 	root.right = new TreeNode(3);
 	root.right->left = new TreeNode(4);
@@ -158,6 +180,7 @@ int main() {
 	codec.print_DFS_preorder(&root);
 	codec.print_DFS_preorder_noRecursive(&root);
 
+	codec.isBalanced(&root) ? cout << "yes" : cout << "no";
 
 	system("pause");
 	return 0;
