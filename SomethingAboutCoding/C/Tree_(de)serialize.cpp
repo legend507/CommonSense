@@ -58,9 +58,9 @@ public:
 private:
 	void DFS(TreeNode* root, stringstream* ret) {
 		if (root) {
-			*ret << root->val << ' ';
-			DFS(root->left, ret);
-			DFS(root->right, ret);
+			*ret << root->val << ' ';	// 1st, put root value
+			DFS(root->left, ret);		// 2nd, put left child value
+			DFS(root->right, ret);		// 3rd, put right child value
 		}
 		else {
 			*ret << "NULL ";

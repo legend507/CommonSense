@@ -1,4 +1,4 @@
-/*
+﻿/*
 Given two strings, the task is to check whether these strings are meta strings or not. Meta strings are the strings which can be made equal by exactly one swap in any of the strings. Equal string are not considered here as Meta strings.
 
 Examples:
@@ -31,6 +31,13 @@ public:
 
 		list<int> record;
 		int swapCounter = 0;
+
+		/*
+		下面的Loop是在遍历整个string，
+		如果找到一个位置i不同，
+		则决定放不放到record中，
+		如果现在的record中已经有一个pos能和i对应，则不放i，同时把那个pos从record中移除
+		如果在record中找不到这个pos，则把i放入record中*/
 		for (int i = 0; i < str1Len; i++) {
 			if (str1[i] != str2[i]) {
 				// try to find this (str2[i],str1[i]) pair in list,

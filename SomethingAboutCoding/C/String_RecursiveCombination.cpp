@@ -30,14 +30,7 @@ e.g., if input is "abcd", then the output is
 #include	<climits>
 #include	<algorithm>
 using namespace std;
-struct TreeNode {
-	int val;
-	TreeNode *left;
-	TreeNode *right;
 
-	// Constructor
-	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
 ///////////////////////////////////////////////////////////////////////
 class Solution {
 public:

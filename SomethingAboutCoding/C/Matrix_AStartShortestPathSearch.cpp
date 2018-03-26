@@ -114,7 +114,8 @@ public:
 	/*
 	主func，从src的8个相邻cell开始，直到找到dest为止
 	用closedList来记录visited or not
-	用openList来记录还有哪个点要去*/
+	用openList来记录还有哪个点要去
+	(想法和Graph的遍历很相似)*/
 	int process(matrix<int> grid, iiPair src, iiPair dest) {
 		// check if src valid, blocked
 		// check if dest valid, blocked
@@ -148,6 +149,9 @@ public:
 
 			int i = curPair.second.first;
 			int j = curPair.second.second;
+			//关于closedList，按以下方式理解
+			//	在第一个while，src被设为True，被移除openList；同时，src周围的8个cell被放入openList
+			//	然后几次while把这8各点依次设为true，然后把8各点周围的点放到openList
 			closedList[i][j] = true;
 
 			/*

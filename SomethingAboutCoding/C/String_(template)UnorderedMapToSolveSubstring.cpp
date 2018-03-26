@@ -57,7 +57,7 @@ public:
 
                 // if s[windowRight] is a correct char, increase counter, this will break the while loop
                 if(map[s[windowRight]] > 0) 
-                    counter ++;
+                    counter ++;		// <- THIS LINE BREAKS the WHILE LOOP
                 
                 windowRight++;
             }

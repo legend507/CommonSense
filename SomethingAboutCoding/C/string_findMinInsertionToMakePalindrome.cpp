@@ -53,8 +53,8 @@ public:
 		else {
 			// if not same, need 1 insertion, move either pointer to middle by 1
 			minInsertion = min(
-				doRecurse(str, head + 1, tail),
-				doRecurse(str, head, tail - 1)
+				doRecurse(str, head + 1, tail),	/*insert in tail the same char as str[head]*/
+				doRecurse(str, head, tail - 1)	/*insert in head the same char as str[tail]*/
 			) + 1;	// 
 		}
 		return minInsertion;
