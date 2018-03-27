@@ -93,9 +93,16 @@ public:
 		return 0x00;
 	}
 	int heapify(vector<int>& arr, int i, int size) {
-		int max = i;
-		int left = 2 * i + 1;
-		int right = 2 * i + 2;
+		/*
+					0
+				/		\
+			  1			2
+			/\			/\
+			3 4			5 6
+		*/
+		int max = i;			// 0 1 2	<- root
+		int left = 2 * i + 1;	// 1 3 5	<- left
+		int right = 2 * i + 2;	// 2 4 6	<- right
 		///
 		if (left < size && arr[left] > arr[max]) max = left;
 		///
