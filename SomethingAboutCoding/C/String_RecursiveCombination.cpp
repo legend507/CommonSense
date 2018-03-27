@@ -16,6 +16,8 @@ e.g., if input is "abcd", then the output is
 			c
 			cd
 			d
+
+O(n!)
 */
 
 #include    <iostream>

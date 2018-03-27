@@ -7,6 +7,7 @@ e.g., if input = abc, then the output is
         bca
         cab
         cba
+O(n*n!)
 */
 
 
