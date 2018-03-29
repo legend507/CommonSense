@@ -1,4 +1,5 @@
 ﻿/*
+(Attention, NOT BinarySearchTree)
 一下class将一个 unordered Binary Tree转化为 balanced binary tree
 并且每个root节点都要比其child小
 这种tree叫min heap tree
