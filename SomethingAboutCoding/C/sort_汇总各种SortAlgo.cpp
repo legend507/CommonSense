@@ -99,7 +99,7 @@ public:
 			  1			2
 			/\			/\
 			3 4			5 6
-		*/
+		以下的max，left，right是用vector index的方式表示一个binary tree*/
 		int max = i;			// 0 1 2	<- root
 		int left = 2 * i + 1;	// 1 3 5	<- left
 		int right = 2 * i + 2;	// 2 4 6	<- right
@@ -109,8 +109,8 @@ public:
 		if (right < size && arr[right] > arr[max]) max = right;
 		///
 		if (max != i) {
-			swap(arr[i], arr[max]);
-			heapify(arr, max, size);
+			swap(arr[i], arr[max]);		// 如果子节点大于父节点，则swap父子
+			heapify(arr, max, size);	// 交换之后，看以前父节点（现在子节点）的新子节点
 		}
 		return 0x00;
 	}

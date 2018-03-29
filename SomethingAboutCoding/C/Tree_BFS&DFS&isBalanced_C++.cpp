@@ -19,6 +19,7 @@ struct TreeNode {
 
 class Codec {
 public:
+
 	/*下面的func检查当前树是否是balanced tree*/
 	bool isBalanced(TreeNode* root) {
 		int leftHeight = 0;
@@ -166,6 +167,17 @@ private:
 
 int main() {
 	Codec codec;
+
+	/*
+				1
+			/		\
+			2		3
+			\		/\
+			 100	4 5
+			 \
+			 200
+
+	*/
 
 	TreeNode root(1);
 
