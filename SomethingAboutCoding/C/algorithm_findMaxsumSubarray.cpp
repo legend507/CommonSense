@@ -5,6 +5,9 @@ Largest Sum Contiguous Subarray
 
 以下是Kadane's algorithm，
 
+P.S., 换个角度想，如果input array是 某公司股票的每天变化值，
+	则return就是买的timing和卖的timing
+
 */
 #include <iostream>
 #include <fstream>
