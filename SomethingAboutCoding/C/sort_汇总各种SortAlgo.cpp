@@ -7,6 +7,11 @@
 5. counting sort
 6. quick sort
 7. merge sort
+
+About the std::sort() function,
+这个sort()是根据C++的版本决定的，
+最常见的implementation是quicksort，或者是hybrid几种算法结合的implementation
+C++的standard只规定了复杂度必须是O(NlogN)，并没有规定必须用什么算法
 */
 
 #include <iostream>
@@ -185,7 +190,13 @@ public:
 	/*
 	6. quick sort
 	Best: O(nlogn)	Worst:O(n^2)
-	就是选pivot，先把这个pivot放对位置，然后看前后两个subArr*/
+	就是选pivot，先把这个pivot放对位置，然后看前后两个subArr
+	Attention: when does worst case occur?
+	about the choosing of pivot (when min or max element are choosed as pivot), 
+	the following 3 cases are worst cases. Choosing a random index (or median) can solve this.
+	1) Array is already sorted in same order.
+	2) Array is already sorted in reverse order.
+	3) All elements are same (special case of case 1 and 2)*/
 	int quickSort(vector<int>& arr) {
 		int low = 0;
 		int high = arr.size()-1;
