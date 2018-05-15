@@ -90,7 +90,7 @@ struct vertex {
 	vertex(int x) : id(x), info("") {};
 };
 class GraphMatrix {
-	int v;
+	int v;					// v = how many nodes
 	vector<vertex> vNode;	// dummy, if you want to store info of each vertex, use this
 	matrix edge;
 public:

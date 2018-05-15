@@ -43,7 +43,7 @@ public:
 		/*
 		Define dp[i][j] = the # of distinct subsequences of t[0...i-1] in s[0...j-1]	<- when i = 0, means t is empty, if i = 1, t has length of 1
 		then we have the following 4 cases:
-		1. dp[i][1] = 0		<- s is empty, if t is also empty see case 2, is t is not empty, 0
+		1. dp[i][1] = 0		<- s is empty, if t is also empty see case 2, if t is not empty, 0
 		2. dp[1][j] = 1		<- t is empty, which is considered to be 1 subsequence
 		3. dp[i][j] = dp[i][j-1], if t[i-1] != s[j-1]
 		4. dp[i][j] = dp[i][j-1] + dp[i-1][j-1], if t[i-1] == s[j-1]

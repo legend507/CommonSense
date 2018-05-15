@@ -1,6 +1,4 @@
-/*
-If a number is multiple of 3
-*/
+
 #include <iostream>
 #include <fstream>
 #include <vector>

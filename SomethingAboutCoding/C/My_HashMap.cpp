@@ -21,7 +21,6 @@ struct HashNode {
 
 //template for generic type
 template<typename K, typename V>
-
 //Our own Hashmap class
 class HashMap
 {
@@ -46,6 +45,7 @@ public:
     V& operator[] (K key) {
         int keyIndex = calcKeyIndex(key);
         
+        // ToDo: 想一下这里能不能不用这个if，直接开始找key和是否为NULL
         // if current chain list empty,
         //    make a new node and return
         if (arr[keyIndex] == NULL) {
