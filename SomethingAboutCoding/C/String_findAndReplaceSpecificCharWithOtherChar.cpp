@@ -1,5 +1,6 @@
 /*
-Given a string containing of e0f, e1f and e?f wildcard characters, generate all binary strings that can be formed by replacing each wildcard character by e0f or e1f.
+Google Interview Question
+Given a string containing of ï¿½e0ï¿½f, ï¿½e1ï¿½f and ï¿½e?ï¿½f wildcard characters, generate all binary strings that can be formed by replacing each wildcard character by ï¿½e0ï¿½f or ï¿½e1ï¿½f.
 
 Input str = "1??0?101"
 Output:

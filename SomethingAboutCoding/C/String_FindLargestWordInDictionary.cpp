@@ -32,9 +32,11 @@ public:
 		int strLen = str.size();
 		int maxSize = 0;
 		int index = -1;
+		// for every word in dict
 		for (int i = 0; i < dict.size(); i++) {
 			int j = 0;	// oneWord
 			int k = 0;	// str
+			// traverse current word and str, check if every char in word also exist in str
 			while (j < dict[i].size() && k < str.size()) {
 				if (str[k] == dict[i][j]) {
 					j++;
