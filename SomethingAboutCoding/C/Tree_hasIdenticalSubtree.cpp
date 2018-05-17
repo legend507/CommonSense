@@ -2,7 +2,7 @@
 下面的Class可以check
 1. 两个Tree是否完全相同
 2. 一个Tree是否是另一个Tree的Subtree
-3. 一个Tree中是否包含相同subtree
+3. 一个Tree中是否包含相同subtree	<- Google Interview Question
  */
 
 #include <vector>

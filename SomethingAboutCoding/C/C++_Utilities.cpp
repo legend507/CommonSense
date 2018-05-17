@@ -34,6 +34,13 @@ public:
 		// recurse case
 		return greatestCommonDivisor(b%a, a);
 	}
+
+	/*to decide if a num is odd or even.*/
+	string isOddOrEven(int num) {
+		if(num&1)   return "odd";
+		else        return "even";
+	}
+
 };
 
 int main() {
