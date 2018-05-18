@@ -8,6 +8,8 @@
 6. quick sort
 7. merge sort
 
+这里没有Bubble sort，但其很好实装，复杂度O(n^2)
+
 About the std::sort() function,
 这个sort()是根据C++的版本决定的，
 最常见的implementation是quicksort，或者是hybrid几种算法结合的implementation

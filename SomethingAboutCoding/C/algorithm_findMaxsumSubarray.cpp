@@ -6,7 +6,7 @@ Largest Sum Contiguous Subarray
 以下是Kadane's algorithm，
 
 P.S., 换个角度想，如果input array是 某公司股票的每天变化值，
-	则return就是买的timing和卖的timing
+则return就是买的timing和卖的timing
 
 */
 #include <iostream>
@@ -41,6 +41,7 @@ public:
 			// 
 			if (maxSoFar > 0) {
 				len++;
+				// when traverse to -6, program does not go into the following if
 				if (maxSoFar > maxHere) {
 					maxHere = maxSoFar;
 					end = i;		// update end boundary of subarray
@@ -62,7 +63,7 @@ int main()
 {
 
 
-	vector<int> nums = { -1000, 1, 2, 4, -1000, 5, 2, 1 };
+	vector<int> nums = { -1000, 1, 2, 4, -6, 5, 2, 1 };
 
 	Solution s;
 

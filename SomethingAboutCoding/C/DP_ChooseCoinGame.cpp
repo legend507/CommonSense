@@ -18,6 +18,7 @@ Google Interview Question
 #include <string>
 #include <stack>
 #include <list>
+#include <algorithm>
 using namespace std;
 
 // a structure of TreeNode
