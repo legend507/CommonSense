@@ -52,3 +52,24 @@ unordered_map是一个hash表，上例中元素是『key：content』；unordere
 查找的时候需要按key值查找
 可以当成是一个简易数据库
 */
+
+
+/*当需要用unordered_map放pair或自定义data struct时，需要定义一个hash func给unordered_map*/
+// Only for pairs of std::hash-able types for simplicity.
+// You can of course template this struct to allow other hash functions
+struct pair_hash {
+    template <class T1, class T2>
+    std::size_t operator () (const std::pair<T1,T2> &p) const {
+        auto h1 = std::hash<T1>{}(p.first);
+        auto h2 = std::hash<T2>{}(p.second);
+
+        // Mainly for demonstration purposes, i.e. works but is overly simple
+        // In the real world, use sth. like boost.hash_combine
+        return h1 ^ h2;  
+    }
+};
+
+using namespace std;
+using Vote = pair<string, string>;
+// 这里，key是Vote型的自定义struct，需要提供pair_hash计算方法
+using Unordered_map = unordered_map<Vote, int, pair_hash>;
