@@ -31,7 +31,7 @@ struct TreeNode {
 
 class Solution {
 public:
-	/*Not Efficient*/
+	/*1. Not Efficient, because max and min need to go through tree several times*/
 	bool isBST(TreeNode* root) {
 		// base case
 		if (root == NULL)	return true;
@@ -48,13 +48,7 @@ public:
 
 		return true;
 	}
-	/*Efficient*/
-	bool isBST_efficient(TreeNode* root) {
-
-	}
-
-
-	/*2 utility functions, to find max and min value of current binary tree*/
+	/*Two utility functions, to find max and min value of current binary tree*/
 	int findMaxValue(TreeNode* root) {
 		// base case
 		if (root == NULL)	return INT_MIN;
@@ -69,6 +63,26 @@ public:
 		// recurse case
 		return min(root->val, min(findMinValue(root->left), findMinValue(root->right)));
 	}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*2. Efficient*/
+	bool isBST_efficient(TreeNode* root) {
+		return isBST_efficient_recurse(root, INT_MIN, INT_MAX);
+	}
+	/*constrain: min <= root->val <= max*/
+	bool isBST_efficient_recurse(TreeNode* root, int min, int max) {
+		if (root == NULL)	return true;	// empty tree is BST
+
+											/*false if root->val is not in range*/
+		if (root->val < min || max < root->val)	return false;
+
+		return (
+			isBST_efficient_recurse(root->left, min, root->val - 1)			/*max for left subtree is set to "root->val - 1"*/
+			&& isBST_efficient_recurse(root->right, root->val + 1, max)		/*min for right subtree is set to "root->val + 1"*/
+			);
+
+	}
+
 };
 
 int main()
@@ -84,7 +98,7 @@ int main()
 	cout << s.findMaxValue(root) << endl;
 	cout << s.findMinValue(root) << endl;
 
-	if (s.isBST(root)) cout << "YES";
+	if (s.isBST_efficient(root)) cout << "YES";
 	else cout << "NO";
 
 	system("pause");
