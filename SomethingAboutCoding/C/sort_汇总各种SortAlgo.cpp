@@ -223,18 +223,21 @@ public:
 		/*此函数返回index，并重新排列arr，s.t.所有low～index-1都<=index，所有index+1～high都>index*/
 
 		int pivot = arr[high];	// <- choose last element as pivot
-		int nextSmall = low;
+		int nextSmall = low-1;
 
 		for (int j = low; j <= high - 1; j++) {
 			/*依次看low～high-1，如果看到比pivot小的值
 			则顺次往前仍*/
 			if (arr[j] <= pivot && j != nextSmall) {
+				nextSmall++;				
 				swap(arr[nextSmall], arr[j]);
-				nextSmall++;
 			}
 		}
-		swap(arr[nextSmall], arr[high]);	// swap 
-		return (nextSmall);		// 可以确保所有low～nextSmall-1的元素都<=nextSmall，nextSmall+1～high的都>nextSmall
+
+		// 注意，这里nextSmall要+1
+		swap(arr[nextSmall+1], arr[high]);
+
+		return (nextSmall+1);		// 可以确保所有low～nextSmall-1的元素都<=nextSmall，nextSmall+1～high的都>nextSmall
 	}
 
 	/*
