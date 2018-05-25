@@ -2,6 +2,9 @@
 一下Class实装 Binary Search Tree
 - insert 
 - deleteNode
+
+Insertion/removal/lookup: O(logn)
+
 */
 
 #include <vector>
@@ -38,6 +41,12 @@ class MyBST {
 		return curRoot;
 	}
 
+	/*
+	Logic是，先recursive找到这个element所在的node(curRoot)
+	然后分 curRoot 有一个孩子(include没孩子的情况)，和有两个孩子的请款
+	- 如果有一个孩子，就用那个孩子代替curRoot
+	- 如果有两个孩子，则在curRoot->right中找到minNode，用minNode代替curRoot，然后把minNode原来的位置删除
+	*/
 	TreeNode* deleteRecurse(TreeNode* curRoot, int element) {
 		// base case
 		if (curRoot == NULL)	return curRoot;
@@ -63,9 +72,10 @@ class MyBST {
 				return temp;
 			}
 
+			// if curRoot has both right and left child
 			/*by inputing curRoot->right, the following func returns
 			比curRoot的val大的最小val (注意这里！！)*/
-			TreeNode* temp = returnMinNode(curRoot->right);
+			TreeNode* temp = returnMinNode(curRoot->right);	// temp is the node that has min val on curRoot->right branch
 			curRoot->val = temp->val;		// <- This line deletes element
 			curRoot->right = deleteRecurse(curRoot->right, temp->val); // 因为已经把temp的val放到curRoot中了，所以删除temp
 		}
