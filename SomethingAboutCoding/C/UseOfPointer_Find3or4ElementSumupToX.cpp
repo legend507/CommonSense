@@ -12,6 +12,8 @@ Output : 1 -2  1
 
 下面有两个func，一个找3个element加起来等于0
 第二个找4个element加起来等于x
+
+还有，如果要找2个element加起来等于0的话，也要先sort array
 */
 
 #include <iostream>

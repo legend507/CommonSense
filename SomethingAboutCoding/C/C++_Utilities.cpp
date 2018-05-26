@@ -41,6 +41,19 @@ public:
 		else        return "even";
 	}
 
+	/*How to quickly compute 2^x
+	快速计算2^x*/
+	int calc2PowX(int x) {
+		return (1<<x);
+	}
+	/*快速check num是否是2的power*/
+	bool isPowerOf2(int num) {
+		/*
+		Explanation: if a num is power of 2, it must have 1 followed by 0s, e.g., 0b100000...
+		*/
+		return (0 == (num&(num-1)));
+	}
+
 };
 
 int main() {
