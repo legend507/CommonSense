@@ -52,6 +52,7 @@ public:
 		}
 		else {
 			// if not same, need 1 insertion, move either pointer to middle by 1
+			//	move head的最终结果小还是move tail的最终结果小？需要两个都试一下
 			minInsertion = min(
 				doRecurse(str, head + 1, tail),	/*insert in tail the same char as str[head]*/
 				doRecurse(str, head, tail - 1)	/*insert in head the same char as str[tail]*/

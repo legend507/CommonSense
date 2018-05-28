@@ -54,10 +54,10 @@ private:
 
 		for (int i = start; i < str.size(); i++) {
 			oneResult += str[i];
-			result.push_back(oneResult);
+			result.push_back(oneResult);	// think of abcd, the 1st oneResult is a, 2nd is ab, abc, abcd, abd (because the last line removed the c)
 
 			recurseCombine(oneResult, result, str, i + 1 /*start*/);
-			oneResult = oneResult.substr(0, oneResult.size() - 1);
+			oneResult = oneResult.substr(0, oneResult.size() - 1);	// 
 		}
 	}
 
