@@ -34,16 +34,17 @@ public:
 		int strLen = str.size();
 		int maxSize = 0;
 		int index = -1;
-		// for every word in dict
+		// for every word in dict, check one word in each loop
 		for (int i = 0; i < dict.size(); i++) {
 			int j = 0;	// oneWord
 			int k = 0;	// str
 			// traverse current word and str, check if every char in word also exist in str
 			while (j < dict[i].size() && k < str.size()) {
+				// current char in word in str
 				if (str[k] == dict[i][j]) {
 					j++;
 				}
-				k++;
+				k++;	// current char in word NOT in str, 
 			}
 			// found all letters in dict[i]
 			if (j == dict[i].size()) {
@@ -68,7 +69,7 @@ int main() {
 		"pintu", "geeksfor", "geeksgeeks",
 		" forgeek", "geeksforgeekss"
 	};
-	string str = "a";
+	string str = "geeksgeeksfor";
 
 	cout << d.findLongestString(dict, str) << endl;
 

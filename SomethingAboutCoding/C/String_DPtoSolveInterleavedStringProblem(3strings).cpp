@@ -66,8 +66,8 @@ public:
 		//	if str3和str2的当前char相同
 		//	if str1和str2中找不到和str3当前char相同的，直接返回false
 		return (
-			(str3[str3Idx] == str1[str1Idx] && recurseCheck(str1, str2, str3, str1Idx + 1, str2Idx, str3Idx + 1))
-			|| (str3[str3Idx] == str2[str2Idx] && recurseCheck(str1, str2, str3, str1Idx, str2Idx + 1, str3Idx + 1))
+			(str3[str3Idx] == str1[str1Idx] && recurseCheck(str1, str2, str3, str1Idx + 1, str2Idx, str3Idx + 1))		// check if a char in str1 is equal to current char in str3
+			|| (str3[str3Idx] == str2[str2Idx] && recurseCheck(str1, str2, str3, str1Idx, str2Idx + 1, str3Idx + 1))	// check if a char in str2 is equal to current char in str3
 			);
 	}
 
