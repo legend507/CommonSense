@@ -91,7 +91,8 @@ public:
 			if (!visited[*itr])
 				topologicalSortUtil(*itr, visited, s);	
 		
-		// if i has no edge pointing to other node
+		// if i has no edge pointing to other node,
+        //  the 1st time this line is executed, the i node must be the one will no edges to other nodes
 		s.push(i);
     }
     

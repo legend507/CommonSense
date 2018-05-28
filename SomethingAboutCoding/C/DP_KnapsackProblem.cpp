@@ -116,7 +116,7 @@ public:
 		case 1：dp[0][w]=0，允许放0个item的时候最大value总是0
 		case 2：dp[?][0]=0，maxW为0的情况下，最大value总是0
 		case 3：（这个认真想一下）
-			1. 如果item i 的重量wi > j，则现在的item不用考虑
+			1. 如果item i 的重量wi > j，则现在的item不用考虑(就是当前item太重了)
 				dp[i][j]=dp[i-1][j]
 			2. 如果wi <= j，则考虑放和不放的情况
 				dp[i][j]=max(

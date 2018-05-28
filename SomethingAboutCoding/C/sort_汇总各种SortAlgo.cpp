@@ -234,7 +234,7 @@ public:
 			}
 		}
 
-		// 注意，这里nextSmall要+1
+		// 注意，这里nextSmall要+1,这里好像不太对...如果pivot已经是当前arr low~high中最大的话，就应该不用swap了
 		swap(arr[nextSmall+1], arr[high]);
 
 		return (nextSmall+1);		// 可以确保所有low～nextSmall-1的元素都<=nextSmall，nextSmall+1～high的都>nextSmall
@@ -269,9 +269,9 @@ public:
 
 		// break arr[left~right] into left, right 2 parts
 		vector<int> leftArr;
-		for (int i = left; i <= middle; i++)	leftArr.push_back(arr[i]);
+		for (int i = left; i <= middle; i++)	leftArr.push_back(arr[i]);	// left array is left~middle
 		vector<int> rightArr;
-		for (int i = middle+1; i <= right; i++)	rightArr.push_back(arr[i]);
+		for (int i = middle+1; i <= right; i++)	rightArr.push_back(arr[i]); // right array is middle+1~right
 
 		/*
 		同时traverse leftArr和rightArr，把比较小的元素放进arr*/

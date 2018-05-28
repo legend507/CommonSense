@@ -131,11 +131,11 @@ public:
 		DFSRecurse(src, visited);
 	}
 	void DFSRecurse(int i, vector<bool>& visited) {
-		// base case
+		// base case, meet a new node, set it to visited and print value
 		visited[i] = true;
 		cout << i << " ";
 
-		// recurse case
+		// recurse case, traverse this new node's edges
 		for (int j = 0; j < v; j++) {
 			if (edge[i][j] != 0 &&
 				!visited[j]) {
