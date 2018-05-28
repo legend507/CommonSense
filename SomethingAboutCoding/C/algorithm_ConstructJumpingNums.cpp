@@ -47,11 +47,11 @@ public:
 				Example, if num = 19, then lastDigit = 9, so 198 is pushed into queue
 				*/
 				int lastDigit = num % 10;
-				// lastDigit == 0, only consider 1
+				// lastDigit == 0
 				if (lastDigit == 0)	q.push((num * 10) + (lastDigit + 1));
-				// lastDigit == 9, only consider 8
+				// lastDigit == 9
 				else if (lastDigit == 9) q.push((num * 10) + (lastDigit - 1));
-				// lastDigit = 1~8, consider (lastDigit - 1) and (lastDgit + 1)
+				// lastDigit = 1~8
 				else {
 					q.push((num * 10) + (lastDigit + 1));
 					q.push((num * 10) + (lastDigit - 1));
@@ -61,7 +61,6 @@ public:
 	}
 
 	void printJumpingNum(int x) {
-		// each loop prints all jumping numbers started from 1xx..., 2xx..., 3xx..., xxx
 		for (int i = 1; i < 9 && i <= x; i++)	printJumpingNumsUtil(x, i);
 	}
 
@@ -69,9 +68,15 @@ public:
 
 int main()
 {
+
+
+	vector<int> nums = { 1, 4, 20, 3, 10, 5 };
+
 	Solution s;
 
 	s.printJumpingNum(105);
+
+
 
 	system("pause");
 	return 0;

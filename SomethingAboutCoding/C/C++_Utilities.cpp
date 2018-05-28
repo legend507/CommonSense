@@ -10,13 +10,12 @@ using namespace std;
 class Utilities {
 public:
 	/*
-	a O(log y) func to calc x^y, y must be positive integer	*/
+	a O(log y) func to calc x^y	*/
 	int power(int x, unsigned int y) {
 		int ret = 1;
 		while (y > 0) {
 			// if last bit of y is 1
 			if (y & 0x01) {
-				// say y = 1010, ret = x^(0010 + 1000)
 				ret = ret * x;
 			}
 			x = x * x;	// with every loop, x -> x^2

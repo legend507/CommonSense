@@ -95,7 +95,7 @@ public:
 			// nums[j] can only == minSoFar[j], when this happens, skip
 			if (nums[j] == minSoFar[j])	continue;
 
-			// candidates is for the 2 in 132, so pop out all candidates that is < minSoFar[i]
+			// candidates is for the 2 in 132, so pop out all candidates that is < 1
 			while (!candidates.empty() && candidates.top() <= minSoFar[j])
 				candidates.pop();
 

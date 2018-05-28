@@ -55,11 +55,9 @@ public:
 		for (int i = size - 2; i >= 0; i--) maxFromRight[i] = max(input[i], maxFromRight[i + 1]);
 
 		// 这点需要用实际例子想想
-		//	不需要关心input[j]-input[i]的大小(只需要input[j]>input[i]就好)
-		//	需要关心j-i的大小
+		//	the while loop can find 
 		int i = 0, j = 0, ret = INT_MIN;
 		while (i < size && j < size) {
-			// 这个if的意思是，i的后面还有满足input[j]>input[i]的j，所以应该j++往后看
 			if (minFromLeft[i] < maxFromRight[j]) {
 				ret = max(j - i, ret);
 				j++;

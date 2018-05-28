@@ -38,7 +38,6 @@ public:
         if(row != col)  return 0x01;    // not square matrix error
 
         // loop the layer, e.g., a 3x3 matrix has 1 layers, a 4x4 matrix has 2 layers to rotate...
-        //  example: row=col=4, x=0(y=0,1,2), x=1(y=1), x markes layers
         for(int x = 0; x < col/2; x++) {
 
             // loop the col 
