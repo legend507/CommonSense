@@ -79,12 +79,13 @@ public:
 		return 0x00;
 	}
 
+	// 入口函数
 	int dijkstra(matrix<int>& graph, int src) {
 		// dist[i] will hold the shortest distance from src to i
 		vector<int> dist(vertex, INT_MAX);
-		dist[src] = 0;
+		dist[src] = 0;	// 最开始只把dist[src]设置为0, 意思是我只知道src->src的路径长是0
 
-		// to record if vertex is processed 
+		// to record if vertex is processed, a.k.a, visited
 		vector<bool> sptSet(vertex, false);
 
 		vector<Path> path(vertex);
@@ -94,9 +95,9 @@ public:
 			取得最小到src距离最小的vertex，在第一次被call时，返回的总是src*/
 			int curIndex = minDistance(dist, sptSet);
 
-			sptSet[curIndex] = true;
+			sptSet[curIndex] = true;	// mark as visited
 
-			/*找到一个已经processed的vertex，从此vertex出发，找与其直连并没有processed的vertex*/
+			/*traverse所有vertex，看是否与curIndex之间有path*/
 			for (int i = 0; i < vertex; i++) {
 				if (!sptSet[i] &&										/*vertex i is not processed yet*/
 					graph[curIndex][i] &&								/*there is an edge from vertex curIndex to i*/
@@ -107,6 +108,8 @@ public:
 					path[i].parentNode = curIndex;					// record path curIndx->i
 				}
 			}
+			/*第一次for loop之后，只有src是被mark为visited，与src之间有path的vertex都还没visited，但是那些vertex的dist都被计算了，
+			在第二次for loop中，dist的最小的vertex会被选出来，然后被标为visited，与那个vertex有path的其他vertex的dist被计算，...*/
 		}
 		printResult(dist, path, src);
 

@@ -48,14 +48,14 @@ public:
 				for (auto itr = record.begin(); itr != record.end(); itr++) {
 					if (str1[*itr] == str2[i] && str1[i] == str2[*itr]) {
 						found = true;
-						record.erase(itr);
+						record.erase(itr);	// this line erase a char == str2[i] that is found before
 						break;
 					}
 				}
 				if (found)
 					swapCounter++;
 				else
-					record.push_back(i);
+					record.push_back(i);	// if not found, push this i (str1[i]) into list, and may be it will be used afterward
 			}
 		}
 

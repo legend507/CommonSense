@@ -75,12 +75,13 @@ public:
     vector<interval<int>> method2(vector<interval<int>>& input) {
         int len = (int)input.size();
         // 1st, sort the input based on start
-        sort(input.begin(), input.end(), interval<int>::compare);
+        sort(input.begin(), input.end(), interval<int>::compare);   // O(nlogn)
+
         stack<interval<int>> s;
         // push 1st element to stack
         s.push(input[0]);
         
-        for(int i = 1; i < len; i++) {
+        for(int i = 1; i < len; i++) {   // O(n)
             interval<int> top = s.top();
             
             // if currnet element in input not overlap with top

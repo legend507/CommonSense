@@ -45,7 +45,7 @@ public:
             map[s[windowLeft]]--;
             windowLeft++;
 
-            // when counter reaches 0, we found a valid window!! now we move windowRight
+            // when counter reaches 0, we found a valid window!! now we move windowRight to kick out the unnecessary chars
             while(0 == counter) {
                 // check if current window is smaller than minWindow
                 if(windowLeft - windowRight < minLen) {
