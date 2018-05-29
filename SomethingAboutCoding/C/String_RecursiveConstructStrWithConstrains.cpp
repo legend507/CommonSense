@@ -22,15 +22,17 @@ private:
 	
 	vector<string> allResult;
 
+	/*brute force method,
+	the input parameter oneResult is pass by value!!!	*/
 	int count(int n, int maxB, int maxC, string oneResult) {
-		// base case
+		// base case - using too many b and c, terminate recursion
 		if (maxB < 0 || maxC < 0)	return 0;
-		// used up all n
+		// used up all n, current length == n, found an answer
 		if (n == 0) { 
 			allResult.push_back(oneResult); 
 			return 1; 
 		}
-		// used up all b and c, only use a
+		// used up all b and c, only can use a, no need for recursion
 		if (maxB == 0 && maxC == 0) { 
 			while (n > 0) {
 				oneResult += "a";
@@ -42,7 +44,7 @@ private:
 
 		// recurse case, we can choose to use a, b, or c
 		int ret = 0;
-		ret = count(n - 1, maxB, maxC, oneResult+"a");			// choose to use a
+		ret += count(n - 1, maxB, maxC, oneResult+"a");			// choose to use a
 		ret += count(n - 1, maxB - 1, maxC, oneResult+"b");		// choose to use b
 		ret += count(n - 1, maxB , maxC - 1, oneResult+"c");	// choose to use c
 
@@ -50,6 +52,7 @@ private:
 	}
 
 public:
+	/*入口函数*/
 	int howMany(int n) {
 		int maxB = 1;
 		int maxC = 2;

@@ -71,11 +71,13 @@ public:
 	}
 	/*constrain: min <= root->val <= max*/
 	bool isBST_efficient_recurse(TreeNode* root, int min, int max) {
+		// base case
 		if (root == NULL)	return true;	// empty tree is BST
-
-											/*false if root->val is not in range*/
+		/*false if root->val is not in range*/
 		if (root->val < min || max < root->val)	return false;
 
+
+		// recurse case
 		return (
 			isBST_efficient_recurse(root->left, min, root->val - 1)			/*max for left subtree is set to "root->val - 1"*/
 			&& isBST_efficient_recurse(root->right, root->val + 1, max)		/*min for right subtree is set to "root->val + 1"*/

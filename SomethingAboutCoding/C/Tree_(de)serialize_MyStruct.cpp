@@ -42,6 +42,7 @@ public:
 	// Encodes a tree to a single string.
 	//	use DFS to construct the string
 	vector<ArrayNode> serialize(TreeNode* root) {
+		// serial中的元素并不是sorted的，root是放在serial[0]的位置上
 		vector<ArrayNode> serial;
 
 		DFS(root, serial);
@@ -71,7 +72,8 @@ private:
 		// base case, 
 		if (serial[rootIndex].isLeaf)	return NULL;
 
-		/*No need to check rootIndex < serial.size(), because assume the input array is correct*/
+		/*No need to check rootIndex < serial.size(), 
+			because assume the input array is correct*/
 
 		// recurse case
 		TreeNode* curRoot = new TreeNode(serial[rootIndex].val);

@@ -69,7 +69,6 @@ public:
 		// base case
 		if (smallT == NULL)	return true;
 		if (bigT == NULL) return false;
-
 		if (areIdentical(bigT, smallT))	return true;
 
 		// recurse case
