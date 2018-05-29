@@ -71,6 +71,7 @@ public:
     
     /*
      将一个BST转换成asending order sorted vector
+     注意，如果用inorder的DFS的话，结果就是排好序的
      Input:     a BST
      Output:    a vector containing all data in the tree (ascending order)
      */

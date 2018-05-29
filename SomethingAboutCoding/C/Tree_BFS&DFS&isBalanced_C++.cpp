@@ -83,6 +83,7 @@ public:
 	/* ------------------------DFS---------------------------------------------------------
 	以下Code是先从root开始，先看左孩子，最后看右孩子的顺序（aka. Preorder）
 	通过改变 print行和 看左孩子，右孩子的行的顺序可以实现 Inorder/Postorder 遍历
+	注意：inorder的DFS在BST中很常用，原因是可以把一个BST直接serialize成生序排序的vector
 	*/
 	// recursive version
 	void print_DFS_preorder(TreeNode* root) {
