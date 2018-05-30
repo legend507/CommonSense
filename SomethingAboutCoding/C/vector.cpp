@@ -83,7 +83,7 @@ for(std::vector<int>::size_type i = 0; i != v.size(); i++)
 
 
 // iterate and erase 怎样边遍历vector边消除元素
-for (vector<string>::iter = vec.begin(); iter != vec.end(); /*no iter++*/) {
+for (vector<string>::iterator iter = vec.begin(); iter != vec.end(); /*no iter++*/) {
 	if (? ? ? )
 		iter = vec.erase(iter);	// must have this "iter ="
 	else

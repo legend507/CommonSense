@@ -38,6 +38,7 @@ class Solution {
 private:
     vector<int> allBranchNum;
     
+    // oneNum is pass by value, 
     void doRecurse(TreeNode* curRoot, string oneNum) {
         oneNum += to_string(curRoot->val);
         

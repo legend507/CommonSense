@@ -24,15 +24,6 @@ Output : 1 -2  1
 #include <algorithm>
 using namespace std;
 
-// a structure of TreeNode
-struct TreeNode {
-	int val;
-	TreeNode* left;
-	TreeNode* right;
-	// constructor
-	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-
 class Solution {
 public:
 	/*
@@ -44,17 +35,23 @@ public:
 
 		// 先排序
 		sort(input.begin(), input.end());
-		for (int i1 = 0; i1<len - 2; i1++) {
-			int i2 = i1 + 1;      //
-			int i3 = len - 1;
 
+		// i1 traverses from 0~n-3
+		for (int i1 = 0; i1<len - 2; i1++) {
+			// when i1 increases, fix i1
+			int i2 = i1 + 1;      	// i2 start to change from i1+1
+			int i3 = len - 1;		// i3 start to change from n-1
+			
+			// this while loop, fix i1, increase i2/decrease i3
 			while (i2 < i3) {
 				int result = input[i1] + input[i2] + input[i3];
 				if (result == 0) {
 					cout << input[i1] << "+" << input[i2] << "+" << input[i3] << "== 0" << endl;
 					break;
 				}
+				// since sorted, if result now is too big, decrease so that input[i3] becomes smaller
 				else if (result > 0)  i3--;
+				// result now is too small, increase i2 so that input[i2] becomes bigger
 				else    i2++;
 			}
 		}
@@ -69,6 +66,8 @@ public:
 
 		sort(input.begin(), input.end());
 
+		/*
+		Same idea, instead this time fix i1 and i2, i3 start from i2+1, i4 start from n-1	*/
 		for (int i1 = 0; i1 < len - 3; i1++) {
 			for (int i2 = i1 + 1; i2 < len - 2; i2++) {
 				// just like func above, fix 1st and 2nd num, trying to find 3rd and 4th 
@@ -87,6 +86,8 @@ public:
 							<< input[i4] << "=" << x << endl;
 						i3++;
 						i4--;
+						// unlike the func above, no break here, because I want to cout all combines
+
 					}
 					else if (sum < x)	i3++;
 					else i4--;

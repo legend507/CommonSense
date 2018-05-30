@@ -73,3 +73,90 @@ using namespace std;
 using Vote = pair<string, string>;
 // 这里，key是Vote型的自定义struct，需要提供pair_hash计算方法
 using Unordered_map = unordered_map<Vote, int, pair_hash>;
+
+/////////////////////////////////////////////////////////////////////////
+// 上面的例子有些不太好懂，参考下面的自定义key for unordered_map
+/////////////////////////////////////////////////////////////////////////
+#include    <iostream>
+#include    <queue>
+#include	<functional>
+#include	<stack>
+#include	<string>
+#include	<iostream>
+#include	<unordered_set>
+#include	<unordered_map>
+using namespace std;
+
+struct MyStruct {
+	string val1;
+	int val2;
+	pair<int,int> val3;
+
+    // constructor
+	MyStruct(string v1, int v2, pair<int, int> v3) : val1(v1), val2(v2), val3(v3) {};
+
+    // 需要1，
+    //  一个判断MyStruct相等的operator overload，MyStruct被当作unordered_map的Key值时，需要判断两个Key值是否相等的时候用
+	bool operator == (const MyStruct& another) const {
+		return (val1 == another.val1 && val2 == another.val2 && val3 == another.val3);
+	}
+
+    // 这个并不是必须，只是为了cout的时候好看而已
+	friend ostream& operator << (ostream& stream, const MyStruct& ms) {
+		stream << ms.val1 << "." << ms.val2 << ".(" << ms.val3.first << "," << ms.val3.second << ")";
+		return stream;
+	}
+
+};
+
+// 需要2，
+//  unordered_map会用std::hash函数来计算Key的hash value，我需要定义一个hash方法来计算MyStruct的hash
+//  可以定义在namespace std中，也可以定义在外面，差别不明(T.B.D)
+//namespace std {
+    template <>
+    struct hash<MyStruct> {
+        size_t operator () (const MyStruct& ms) const {
+            auto h1 = hash<string>{}(ms.val1);
+            auto h2 = hash<int>{}(ms.val2);
+            auto h3 = hash<int>{}(ms.val3.first);
+            auto h4 = hash<int>{}(ms.val3.second);
+
+            // simple XOR, just for display purpose, NOT a good hash func
+            return (h1^h2^h3^h4);
+
+        }
+    };
+//}
+
+
+class Codec {
+public:
+
+	int func() {
+		unordered_map<MyStruct, int> test;
+
+		MyStruct ms1("name", 1, make_pair(3,4));
+
+		test[ms1] = 10;
+
+		for (auto i = 0; i < test.bucket_count(); i++) {
+			for (auto iter = test.begin(); iter != test.end(); iter++) {
+				cout << iter->first << ":" << iter->second << endl;
+			}
+		}
+
+		return 0;
+	}
+
+};
+
+int main() {
+	Codec codec;
+
+	codec.func();
+
+	system("pause");
+	return 0;
+
+}
+
