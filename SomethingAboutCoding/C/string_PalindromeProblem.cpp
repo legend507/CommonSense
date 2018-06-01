@@ -1,4 +1,5 @@
 ﻿/*
+问题1
 Given a string, find the minimum number of characters to be inserted to convert it to palindrome (回文).
 
 Before we go further, let us understand with few examples:
@@ -102,3 +103,67 @@ int main() {
 	return 0;
 }
 
+////////////////////////////////////////////////////////////////////////////////////
+/*
+问题2
+Google Interview Question
+
+Longest Palindromic Substring
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example 1:
+
+Input: "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+Example 2:
+
+Input: "cbbd"
+Output: "bb"
+*/
+#include    <iostream>
+#include    <queue>
+#include	<functional>
+#include	<stack>
+#include	<string>
+#include	<iostream>
+#include	<unordered_set>
+#include	<unordered_map>
+#include	<algorithm>
+#include	<set>
+using namespace std;
+
+class Solution {
+public:
+	/*以下方法是别人的，很brilliant
+	思想是，loop i 从0到size-1,
+	对每个i，设定left和right=i，然后先move r跳过所有重复的char，然后
+	如果s[left]==s[right]，则left--且right++ 来扩大当前回文substring*/
+	string longestPalindrome(string s) {
+		int size = s.size();
+		if (size == 0) return "";
+		if (size == 1) return s;
+
+		int maxLen = 1;
+		int maxStart = 0;
+		for (int i = 0; i < size; ) {
+			// remaining chars not enough to be the longest, break loop
+			if (size - i <= maxLen / 2) break;
+
+			int l = i, r = i;
+
+			while (r < size - 1 && s[r + 1] == s[r]) r++;	// think abbbbbbba (7 bs) and abbbbbba (6 bs) are all Palindromic, keep l to 1st a, and move r to 2nd a, and l-- r++ from there.
+			i = r + 1;	// reset i, 
+
+			// expand by moving l to left and r to right
+			while (r < size - 1 && l > 0 && s[r + 1] == s[l - 1]) { r++; l--; }
+
+			int newLen = r - l + 1;
+			if (newLen > maxLen) {
+				maxLen = newLen;
+				maxStart = l;
+			}
+		}
+		return s.substr(maxStart, maxLen);
+	}
+};
