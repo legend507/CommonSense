@@ -90,3 +90,23 @@ for (vector<string>::iterator iter = vec.begin(); iter != vec.end(); /*no iter++
 		iter++;
 }
 
+// 用int i erase的方法，同样，for loop最后没有i++
+class Solution {
+public:
+	int removeDuplicates(vector<int>& nums) {
+		if (nums.empty()) return 0;
+		int toExpect = nums[0] + 1;	// nums[1] must >= toExpect
+
+		for (int i = 1; i < nums.size();) {
+			if (nums[i] < toExpect) {
+				nums.erase(nums.begin() + i);
+			}
+			else {
+				toExpect = nums[i] + 1;
+				i++;
+			}
+		}
+
+		return nums.size();
+	}
+};

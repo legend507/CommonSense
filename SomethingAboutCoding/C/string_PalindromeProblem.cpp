@@ -63,7 +63,7 @@ public:
 	}
 
 	/*
-	Method2, DP
+	Method2, DP, 这个方法是错的！！！
 	O(n^2)
 	*/
 	int findMinInsertion2(string str) {
@@ -167,3 +167,70 @@ public:
 		return s.substr(maxStart, maxLen);
 	}
 };
+
+////////////////////////////////////////////////////////////////////////
+/*
+问题3
+Google Interview Qs
+
+Shortest Palindrome
+Given a string s, you are allowed to convert it to a palindrome by adding characters in front of it. Find and return the shortest palindrome you can find by performing this transformation.
+
+Example 1:
+
+Input: "aacecaaa"
+Output: "aaacecaaa"
+Example 2:
+
+Input: "abcd"
+Output: "dcbabcd"
+*/
+
+#include    <iostream>
+#include    <queue>
+#include	<functional>
+#include	<stack>
+#include	<string>
+#include	<iostream>
+#include	<unordered_set>
+#include	<unordered_map>
+#include	<sstream>			// istringstream and ostringstream
+#include	<set>
+#include	<climits>
+#include	<algorithm>
+using namespace std;
+
+///////////////////////////////////////////////////////////////////////
+class Solution {
+public:
+	/*下面方法是别人的，
+	想法很简单 但同时很brilliant，就是创建一个逆序的t，然后找出最短的substr*/
+	string shortestPalindrome(string s) {
+		string t = s;	// copy the string
+		reverse(t.begin(), t.end() );
+
+		int start = 0;
+		int len = s.size();
+
+		/*
+		Think abcde, edcba
+		the while loop will decide to put edcb infront of abcde
+		becuase when start = 4, len = 1, a in edcba will equal to a in abcde, break the loop
+		*/
+		while (t.substr(start, len) != s.substr(0, len)) {
+			start++, len--;
+		}
+		return t.substr(0, start) + s;
+	}
+};
+
+int main() {
+	Solution s;
+	string str = "aabba";
+
+	s.shortestPalindrome(str);
+
+
+	system("pause");
+	return 0;
+}
