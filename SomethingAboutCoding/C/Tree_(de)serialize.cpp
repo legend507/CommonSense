@@ -21,6 +21,7 @@ struct TreeNode {
 
 /*
 	Codec class可以将TreeNode结构的树 转换成 string，并将 string 转换成为 TreeNode结构树
+	注意: 如果tree是BST的话，用inorder的DFS可以把其serialize成为一个sorted vector
 */
 class Codec {
 public:
@@ -56,6 +57,7 @@ public:
 	}
 
 private:
+/*preorder DFS可以把一个binary tree转化成为一个vector*/
 	void DFS(TreeNode* root, stringstream* ret) {
 		if (root) {
 			*ret << root->val << ' ';	// 1st, put root value

@@ -1,7 +1,8 @@
 /*
 Google Intervie Question
 
-Giving a dictionary and a string ‘str’, your task is to find the longest string in dictionary of size x which can be formed by deleting some characters of the given ‘str’.
+Giving a dictionary and a string ‘str’, 
+your task is to find the longest string in dictionary of size x which can be formed by deleting some characters of the given ‘str’.
 
 Examples:
 

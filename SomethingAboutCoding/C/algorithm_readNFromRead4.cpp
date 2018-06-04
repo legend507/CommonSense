@@ -33,13 +33,13 @@ public:
      * @return    The number of characters read
      */
     int read(char *buf, int n) {
-        char* myBuf = new char[4];
+        char* myBuf = new char[4];  // read4 put data inthis myBuf
         int ret = 0;
         bool endOfFile = false;
         
         while( !endOfFile && ret < n) {
             int bytes = read4(myBuf);
-            if(bytes < 4) endOfFile = true;
+            if(bytes < 4) endOfFile = true; // if return of read4 is NOT 4, then EOF
             
             for(int i = 0; i < bytes && ret < n; i++)
                 buf[ret++] = myBuf[i];

@@ -2,6 +2,8 @@
 下面是BinarySearch的C++实装
 有 递归方法
 有 非递归方法
+
+O(logn)
 */
 
 #include <iostream>

@@ -51,12 +51,14 @@ public:
 	}
 
 	/*entrance to a recursive func, detect if there are loops (cycles) in a graph
-	这个方法需要死记硬背一下...*/
+	这个方法需要死记硬背一下...
+	与DFS不同，没有src，而是对于所有v，都check*/
 	bool hasLoop() {
 		vector<bool> visited(v, false);		// mark if vertex is visited
 		vector<bool> recStack(v, false);	// doing DFS from a vertex, this vector is to record if 
 
 		for (int i = 0; i < v; i++) {
+			// i是起点，对于每个起点，check有无loop，有一个有的话就返回true
 			if (hasLoop_util(i, visited, recStack))	return true;
 		}
 		return false;

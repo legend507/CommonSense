@@ -83,7 +83,7 @@ public:
 /*
 下面的Class是用Matrix实装的*/
 using matrix = vector<vector<int>>;
-///这个struct只是个frameword
+///这个struct只是个framework
 struct vertex {
 	int id;
 	string info;
