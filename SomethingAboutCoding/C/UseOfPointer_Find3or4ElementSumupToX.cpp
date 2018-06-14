@@ -13,7 +13,8 @@ Output : 1 -2  1
 下面有两个func，一个找3个element加起来等于0
 第二个找4个element加起来等于x
 
-还有，如果要找2个element加起来等于0的话，也要先sort array
+还有，如果要找2个element加起来等于某个特定值的话，也可以先sort array；
+或者用unordered_set，遍历input素有元素，计算[特定值-当前element]，看结果在不在unordered_set里面，不在的话把当前element放进unordered_set
 */
 
 #include <iostream>
