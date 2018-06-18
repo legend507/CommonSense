@@ -45,6 +45,10 @@ public:
                 buf[ret++] = myBuf[i];
             
         }
+
+        // Do not forget to delete the new-ed memory
+        delete [] myBuf;
+
         return ret;
     }
 };

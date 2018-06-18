@@ -81,3 +81,68 @@ int main() {
 	system("pause");
 	return 0;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////
+/*
+下面的问题和上面的有些像，不过更难，
+试问最少要swap A中的char几次，才能使A==B?
+Strings A and B are K-similar (for some non-negative integer K) if we can swap the positions of two letters in A exactly K times so that the resulting string equals B.
+
+Given two anagrams A and B, return the smallest K for which A and B are K-similar.
+
+Example 1:
+
+Input: A = "ab", B = "ba"
+Output: 1
+Example 2:
+
+Input: A = "abc", B = "bca"
+Output: 2
+Example 3:
+
+Input: A = "abac", B = "baca"
+Output: 2
+Example 4:
+
+Input: A = "aabc", B = "abca"
+Output: 2
+Note:
+
+1 <= A.length == B.length <= 20
+A and B contain only lowercase letters from the set {'a', 'b', 'c', 'd', 'e', 'f'}
+*/
+
+class Solution {
+public:
+	/*下面的方法是别人的，没太看懂...*/
+    int kSimilarity(string A, string B) {
+        string tA, tB;
+        for (int i =  0; i < A.size(); i++) {
+            if (A[i] != B[i]) {
+                tA.push_back(A[i]);
+                tB.push_back(B[i]);
+            }
+        }
+        unordered_map<string, int> dp;
+        return dfs(tA, tB, 0, dp);
+    }
+    
+    int dfs(string a, string b, int pos, unordered_map<string, int>& dp) {
+        if (pos == b.size()) {
+            dp[a] = 0;
+            return 0;
+        }
+        if (dp.count(a)) return dp[a];
+        if (a[pos] == b[pos]) return dfs(a, b, pos+1, dp);
+        int mn = INT_MAX;
+        for (int i = pos + 1; i < a.size(); i++) {
+            if (a[i] == b[pos]) {
+                swap(a[pos], a[i]);
+                mn = min(mn, dfs(a, b, pos+1, dp) + 1);
+                swap(a[pos], a[i]);
+            }
+        }
+        dp[a] = mn;
+        return dp[a];
+    }
+};

@@ -70,14 +70,23 @@ public:
 			return 0;
 
 		while (end<len) {
-			if (map[s[end]]++ == 0) {
+			// record the occurance of this char in map,
+			map[s[end]] ++ ;
+
+			// found a new char,  reduce the k value
+			if (map[s[end]] == 1) {
 				k--;
+				// at some point, k will <0 (having too many distinct chars), move begin to make k = 0
 				while (k<0 && begin<end) {
-					if (--map[s[begin++]] == 0)
+					// while moving begin, at some point, # of distinct chars will decrease to just k (k==0)
+					if (map[s[begin]] == 1)
 						k++;
+					map[s[begin]]--;	// erase the occurance by 1
+					begin++;			// move begin 
 				}
 			}
 			end++;
+			// d is the length of substring (end+1-begin), after end++, the equation is (end-begin)
 			if (k == 0)
 				d = d>(end - begin) ? d : (end - begin);
 		}
