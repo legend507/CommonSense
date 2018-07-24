@@ -20,7 +20,7 @@ index = data_Mazda.loc[data_Mazda['日付'] == '2015-07-28'].index[0]
 data_stock = data_stock[data_stock['日付'].between(startDate, endDate, inclusive=True)].reset_index()
 
 # iloc[] to get a specific cell
-print('Time: {} ~ {}'.format(data1['時間'].iloc[0], data1['時間'].iloc[-1]))
+print('Time: {} ~ {}'.format(data1.iloc[0]['時間'], data1.iloc[-1]['時間']))
 
 # convert one colume to hex
 data['Data1'] = data['Data1'].apply(lambda x: int(x, base=16))
@@ -34,4 +34,8 @@ for index, row in df.iterrows():
     for name, values in oneMsg.iteritems():
         print(name)
 
+# check if time in df1 is also in df2
+for time in df1['Date]:
+    if time not in df2['Date'].values:
+        print(time)
 
