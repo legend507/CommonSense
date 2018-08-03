@@ -39,3 +39,22 @@ for time in df1['Date]:
     if time not in df2['Date'].values:
         print(time)
 
+#--- how to use pandas to read excel sheets
+from pandas import ExcelFile
+from pandas import ExcelWriter
+
+database2 = './data/database2.xlsx'
+excel = pd.ExcelFile(database2)
+for oneSheet in excel.sheet_names:
+    print('Doing ' + oneSheet)
+    demoData = pd.read_excel(database2, sheetname=oneSheet)
+    print(demoData)
+
+#--- how to use pandas to read excel sheets
+database2 = './data/database2.xlsx'
+excel = pd.ExcelFile(database2)
+print(len(excel.sheet_names))
+for oneSheet in excel.sheet_names:
+    print('Doing ' + oneSheet)
+    demoData = excel.parse(oneSheet)        # 直接parse也OK，这种方法比较好
+    print(demoData)
