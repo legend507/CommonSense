@@ -7,3 +7,5 @@ In this folder, 3 methods to write a .xsd is demostrated.
 3rd method is also a better one.
 
 The best method is to combinet 2nd and 3rd, i.e. to define all base attributes, elements, types first. And then define the framework based on those.
+
+FYI, JSON also has its schema (2018.08, on draft-07), but it is much less widely used. 
