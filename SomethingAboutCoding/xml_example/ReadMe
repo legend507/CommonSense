@@ -1,0 +1,9 @@
+# Example of XML (.xml) file and its schema (.xsd) files.
+Backgroud: XML schema is used to "validate" a xml file.
+
+In this folder, 3 methods to write a .xsd is demostrated.
+1st method is the simplest one. Do NOT use in real projects.
+2nd method is a better one.
+3rd method is also a better one.
+
+The best method is to combinet 2nd and 3rd, i.e. to define all base attributes, elements, types first. And then define the framework based on those.

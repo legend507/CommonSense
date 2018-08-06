@@ -1,4 +1,7 @@
 ﻿/*
+2018年2月的时候，我面Goldman Sachs的时候的coding问题，当时我没答出来，这是后来自己总结的
+总结一下Goldman Sachs面试失败原因，还是C++写的太少，
+
  下面是一个 MyHashMap Class
  构造是 有20个Bucket，根据Key值算出Bucket，然后往Bucket里面加元素
  用的是operator overload[]
