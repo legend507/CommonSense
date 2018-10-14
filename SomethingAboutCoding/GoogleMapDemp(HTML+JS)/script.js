@@ -31,3 +31,16 @@ function myMap() {
     });
 
 }
+
+const polygonURL = 'https://nominatim.openstreetmap.org/search.php?q=Japan&polygon_geojson=1&format=json'
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+var JapanPolygon = httpGetAsync(polygonURL)
